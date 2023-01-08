@@ -1,0 +1,28 @@
+:root {
+  --principal-blue: #1a2037;
+  --secondary-blue: #00253c;
+  --light-blue: #9bdaf2;
+  --yellow-gold: #ffdd03;
+}
+
+body {
+  background: var(--principal-blue);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+}

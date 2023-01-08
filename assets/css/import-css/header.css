@@ -1,0 +1,171 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 80px;
+  border-bottom: 1px solid rgba(85, 85, 85, 0.3);
+  transition: padding 0.5s;
+}
+
+header .header-logo {
+  width: 120px;
+}
+
+header nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  position: relative;
+}
+
+header nav .nav-icon {
+  width: 25px;
+  cursor: pointer;
+}
+
+header nav .nav-search {
+  background: var(--secondary-blue);
+  display: flex;
+  gap: 4px;
+  padding: 5px 8px 8px 10px;
+  border-radius: 15px;
+  box-shadow: 0 0 12.5px 2px rgba(0, 0, 0, 0.2);
+}
+
+header nav .nav-search input {
+  outline: none;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--light-blue);
+  color: #fff;
+  font-family: "Manrope", sans-serif;
+  width: 40px;
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+header nav .nav-search input:focus {
+  width: 200px;
+}
+
+header nav .container-menu-mobile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header nav .user {
+  width: 35px;
+}
+
+header nav .user img {
+  border-radius: 50%;
+}
+
+header nav .menu {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  header {
+    padding: 30px;
+  }
+
+  header .header-logo {
+    width: 80px;
+  }
+
+  header nav .menu {
+    display: block;
+    transition: 0.3s;
+  }
+
+  header nav .menu.active {
+    transform: rotate(90deg);
+  }
+
+  header nav .user img {
+    width: 35px;
+  }
+
+  header nav .container-menu-mobile {
+    background: var(--secondary-blue);
+    box-shadow: 0 0 12.5px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    flex-direction: column;
+    width: 200px;
+    opacity: 0;
+    display: none;
+  }
+
+  header nav .container-menu-mobile.active {
+    display: flex;
+    animation: slide-menu 0.5s forwards;
+  }
+
+  @keyframes slide-menu {
+    from {
+      top: 40px;
+    }
+
+    to {
+      opacity: 1;
+      top: 50px;
+    }
+  }
+
+  header nav .container-menu-mobile::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 12px 12px 12px;
+    border-color: transparent transparent var(--secondary-blue) transparent;
+    position: absolute;
+    top: -10px;
+    right: 0;
+  }
+
+  header nav .container-menu-mobile .nav-icon {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: fit-content;
+  }
+
+  header nav .container-menu-mobile .nav-icon::after {
+    display: inline-block;
+    font-family: "Manrope", sans-serif;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  header nav .container-menu-mobile .notification::after {
+    content: "Notification";
+  }
+
+  header nav .container-menu-mobile .nav-icon::after:hover {
+    color: var(--light-blue);
+  }
+
+  header nav .container-menu-mobile .user::after {
+    content: "Account";
+  }
+}
+
+@media (max-width: 550px) {
+  .nav-search.active {
+    position: absolute;
+    right: 0;
+    width: 90vw;
+    transition: width 0.5s;
+  }
+
+  .nav-search.active input {
+    width: 100% !important;
+  }
+}
