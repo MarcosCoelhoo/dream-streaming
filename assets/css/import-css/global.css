@@ -23,6 +23,24 @@ li {
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 img {
   width: 100%;
+}
+
+.rate {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--yellow-gold);
+  font-family: "Manrope", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.rate img {
+  width: 12px;
 }
