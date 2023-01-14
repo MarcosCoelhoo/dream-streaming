@@ -31,6 +31,10 @@ img {
   width: 100%;
 }
 
+.main-container {
+  margin-bottom: 60px;
+}
+
 .rate {
   display: flex;
   align-items: center;

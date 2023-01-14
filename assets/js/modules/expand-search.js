@@ -14,5 +14,3 @@ function handleExpandSearch({ target }) {
 }
 
 searchContainer.addEventListener("click", handleExpandSearch);
-
-console.log(searchContainer);

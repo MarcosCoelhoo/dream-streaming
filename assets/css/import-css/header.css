@@ -52,6 +52,7 @@ header nav .container-menu-mobile {
   display: flex;
   align-items: center;
   gap: 20px;
+  z-index: 999;
 }
 
 header nav .user {
