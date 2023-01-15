@@ -3,9 +3,8 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 30px 80px;
-  /* border-bottom: 1px solid rgba(85, 85, 85, 0.3); */
   transition: padding 0.5s;
-  /* background: #1d2341; */
+  background: var(--principal-blue);
 }
 
 header .header-logo {

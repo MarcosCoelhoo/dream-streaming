@@ -1,16 +1,27 @@
-export default function initExpandSearch() {}
-
 import outsideClick from "./outside-click.js";
 
-const searchContainer = document.querySelector('[data-search="container"]');
+export default function initExpandSearch() {
+  const searchContainer = document.querySelector('[data-search="container"]');
+  const searchInput = document.querySelector('[data-search="container"] input');
+  const mainContainerContent = document.querySelector(
+    "#main-content-container"
+  );
+  const mainContainerSearch = document.querySelector("#main-search-container");
 
-const events = ["touchstart", "click"];
+  const events = ["touchstart", "click"];
 
-function handleExpandSearch({ target }) {
-  searchContainer.classList.add("active");
-  outsideClick(searchContainer, events, () => {
-    searchContainer.classList.remove("active");
-  });
+  function handleExpandSearch() {
+    searchContainer.classList.add("active");
+    mainContainerSearch.classList.add("active");
+    mainContainerContent.classList.remove("active");
+    outsideClick(searchContainer, events, () => {
+      searchContainer.classList.remove("active");
+      if (searchInput.value === "") {
+        mainContainerSearch.classList.remove("active");
+        mainContainerContent.classList.add("active");
+      }
+    });
+  }
+
+  searchContainer.addEventListener("click", handleExpandSearch);
 }
-
-searchContainer.addEventListener("click", handleExpandSearch);
