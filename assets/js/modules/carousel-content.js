@@ -1,4 +1,4 @@
-export default function carouselMovies(idContainer) {
+export default function carouselContent(idContainer) {
   const carouselControl = document.querySelectorAll(
       `${idContainer} [data-control]`
     ),

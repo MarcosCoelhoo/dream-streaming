@@ -1,11 +1,15 @@
 import initMenuMobile from "./modules/menu-mobile.js";
 import initExpandSearch from "./modules/expand-search.js";
-import initCreatePopularList from "./modules/create-popular-list.js";
-import initCreateTopRatedList from "./modules/create-top-rated-list.js";
 import initCreateLandingPage from "./modules/create-landing-page.js";
+import initCreatePopularMovie from "./modules/create-popular-movie.js";
+import initCreateTopRatedMovie from "./modules/create-top-rated-movie.js";
+import initCreatePopularSerie from "./modules/create-popular-serie.js";
+import initCreateTopRatedSerie from "./modules/create-top-rated-serie.js";
 
 initMenuMobile();
 initExpandSearch();
 initCreateLandingPage();
-initCreatePopularList();
-initCreateTopRatedList();
+initCreatePopularMovie();
+initCreateTopRatedMovie();
+initCreatePopularSerie();
+initCreateTopRatedSerie();

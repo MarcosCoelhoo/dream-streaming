@@ -26,6 +26,7 @@ export default async function initCreateLandingPage() {
   itemLi.innerHTML = `
     <div class="landing-content">
             <div class="content-texts">
+            <p class="landing-info">#1 Popular Movies</p>
               <h1 class="landing-title">${title}
               </h1>
               <p class="landing-description">${description}</p>

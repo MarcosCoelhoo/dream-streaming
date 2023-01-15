@@ -134,6 +134,10 @@
     padding: 30px;
   }
 
+  .section-title {
+    font-size: 1.4rem;
+  }
+
   .movie-list li .movie-image {
     width: 130px;
   }

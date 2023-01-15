@@ -1,18 +1,20 @@
-import carouselMovies from "./carousel-movie.js";
+import carouselContent from "./carousel-content.js";
 
-export default async function initCreatePopularList() {
+export default async function initCreateTopRatedMovie() {
   const baseUrl = "https://api.themoviedb.org/3",
     imageUrl = "https://image.tmdb.org/t/p/w780",
     apiKey = "25ea17bf3ab54060fea05921b6061c3c";
 
-  const popularMovieList = document.querySelector("#popular .movie-list");
+  const popularMovieList = document.querySelector(
+    "#movie-top-rated .movie-list"
+  );
 
   let numPages = 2;
 
   for (let page = 1; page <= numPages; page++) {
     const response = await (
       await fetch(
-        `${baseUrl}/movie/popular?api_key=${apiKey}&page=${page}&language=en`
+        `${baseUrl}/movie/top_rated?api_key=${apiKey}&page=${page}&language=en`
       )
     ).json();
 
@@ -27,7 +29,7 @@ export default async function initCreatePopularList() {
       const itemLi = document.createElement("li");
 
       itemLi.innerHTML = `
-  <div class="popular-image movie-image">
+  <div class="top-rated-image movie-image">
   <img src="${imageUrl}${imageMovie}" alt="">
 </div>
 <div class="movie-content">
@@ -53,6 +55,5 @@ export default async function initCreatePopularList() {
       popularMovieList.appendChild(itemLi);
     });
   }
-
-  carouselMovies("#popular");
+  carouselContent("#movie-top-rated");
 }

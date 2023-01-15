@@ -4,6 +4,12 @@
   background: #1d2341;
 }
 
+.landing-info {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.9rem;
+  color: var(--light-blue);
+}
+
 .landing-list .slide-container {
   display: flex;
   justify-content: space-between;
