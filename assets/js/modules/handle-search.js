@@ -1,6 +1,9 @@
 export default function initHandleSearch() {
   const searchInput = document.querySelector('[data-search="container"] input'),
     searchLabel = document.querySelector('[data-search="container"] label'),
+    searchLabelImage = document.querySelector(
+      '[data-search="container"] label img'
+    ),
     searchContainer = document.querySelector("#main-search-container"),
     sectionTitle = document.querySelector(
       "#main-search-container .section-title"
@@ -18,7 +21,6 @@ export default function initHandleSearch() {
     )
       .then((r) => r.json())
       .then((json) => {
-        console.log(json);
         if (movieList.children.length) {
           const arrayChildren = Array.from(movieList.children);
           sectionTitle.innerText = "Search by movies";

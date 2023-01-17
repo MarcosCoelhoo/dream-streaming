@@ -11,13 +11,16 @@ export default async function initCreateLandingPage() {
     await fetch(`${baseUrl}/movie/popular?api_key=${apiKey}&language=en`)
   ).json();
 
+  let movieRandom = +(Math.random() * response.results.length).toFixed();
+  console.log(movieRandom);
+
   const {
     vote_average: rate,
     overview: description,
     release_date: year,
     backdrop_path: backdropMovie,
     original_title: title,
-  } = response.results[0];
+  } = response.results[movieRandom];
 
   const itemLi = document.createElement("li");
 
@@ -26,7 +29,7 @@ export default async function initCreateLandingPage() {
   itemLi.innerHTML = `
     <div class="landing-content">
             <div class="content-texts">
-            <p class="landing-info">#1 Popular Movies</p>
+            <p class="landing-info">#${movieRandom + 1} Popular Movies</p>
               <h1 class="landing-title">${title}
               </h1>
               <p class="landing-description">${description}</p>
