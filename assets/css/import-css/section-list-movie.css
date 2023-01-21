@@ -7,6 +7,7 @@
 .section-title {
   font-family: "Work Sans", sans-serif;
   font-size: 1.7rem;
+  font-weight: 600;
   letter-spacing: 0.2rem;
   text-transform: capitalize;
   color: #fff;
@@ -70,17 +71,21 @@
   position: relative;
   width: fit-content;
   box-shadow: 0 0 12.5px 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .movie-list li .movie-image {
   width: 180px;
+  pointer-events: none;
 }
 
 .movie-list li .movie-image img {
+  pointer-events: none;
   border-radius: 6px;
 }
 
 .movie-list li .movie-content {
+  pointer-events: none;
   display: grid;
   grid-template-rows: 1fr 1fr;
   height: 100%;

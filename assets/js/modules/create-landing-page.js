@@ -6,20 +6,23 @@ export default async function initCreateLandingPage() {
   const landingList = document.querySelector(
     ".landing-container .landing-list"
   );
+  const pageRandom = +(Math.random() * 3 + 1).toFixed();
 
   const response = await (
-    await fetch(`${baseUrl}/movie/popular?api_key=${apiKey}&language=en`)
+    await fetch(
+      `${baseUrl}/movie/popular?api_key=${apiKey}&language=en&region=BR&page=${pageRandom}`
+    )
   ).json();
 
-  let movieRandom = +(Math.random() * response.results.length).toFixed();
-  console.log(movieRandom);
+  const movieRandom = +(Math.random() * response.results.length + 1).toFixed(),
+    numMovie = (pageRandom - 1) * 20 + movieRandom;
 
   const {
     vote_average: rate,
     overview: description,
     release_date: year,
     backdrop_path: backdropMovie,
-    original_title: title,
+    title,
   } = response.results[movieRandom];
 
   const itemLi = document.createElement("li");
@@ -29,7 +32,7 @@ export default async function initCreateLandingPage() {
   itemLi.innerHTML = `
     <div class="landing-content">
             <div class="content-texts">
-            <p class="landing-info">#${movieRandom + 1} Popular Movies</p>
+            <p class="landing-info">#${numMovie} Popular Movies</p>
               <h1 class="landing-title">${title}
               </h1>
               <p class="landing-description">${description}</p>

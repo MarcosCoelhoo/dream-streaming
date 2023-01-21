@@ -10,11 +10,16 @@ body {
 }
 
 .main-container {
+  margin-bottom: 60px;
+}
+
+.main-container,
+.landing-container {
   display: none;
 }
 
-.main-container.active {
-  margin-bottom: 60px;
+.main-container.active,
+.landing-container.active {
   display: block;
 }
 

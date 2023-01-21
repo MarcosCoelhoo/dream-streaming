@@ -20,6 +20,7 @@
 
 .landing-list .landing-image {
   flex: 300px;
+  justify-content: center;
   max-width: 600px;
   box-shadow: 0 0 12.5px 2px rgba(0, 0, 0, 0.2);
 }
@@ -48,7 +49,7 @@
   font-weight: 700;
   font-size: 2.3rem;
   color: #fff;
-  width: 90%;
+  width: 25ch;
 }
 
 .landing-container .landing-content .content-texts .landing-description {
