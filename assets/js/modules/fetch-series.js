@@ -10,15 +10,19 @@ export default async function fetchSerie(category, idSection, objInfos) {
   ).json();
 
   response.results.forEach((item) => {
-    const objMidiaInfo = {
-      rate: item.vote_average,
-      popularity: item.popularity,
-      year: item.first_air_date,
-      imageMidia: item.poster_path,
-      idMidia: item.id,
-      type: "tv",
-    };
+    if (item.backdrop_path) {
+      const objMidiaInfo = {
+        rate: item.vote_average.toFixed(1),
+        popularity: item.popularity,
+        year: item.first_air_date.slice(0, 4),
+        backdrop: item.backdrop_path,
+        image: item.poster_path,
+        id: item.id,
+        type: "tv",
+        title: item.name,
+      };
 
-    initBuildSection(idSection, objMidiaInfo);
+      initBuildSection(idSection, objMidiaInfo);
+    }
   });
 }

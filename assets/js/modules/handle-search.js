@@ -28,16 +28,20 @@ export default function initHandleSearch() {
         }
 
         json.results.forEach((item) => {
-          const objMidiaInfo = {
-            rate: item.vote_average,
-            popularity: item.popularity,
-            year: item.release_date,
-            imageMidia: item.poster_path,
-            idMidia: item.id,
-            type: "movie",
-          };
+          if (item.backdrop_path) {
+            const objMidiaInfo = {
+              rate: item.vote_average,
+              popularity: item.popularity,
+              year: item.release_date.slice(0, 4),
+              backdrop: item.backdrop_path,
+              image: item.poster_path,
+              id: item.id,
+              type: "movie",
+              title: item.title,
+            };
 
-          initBuildSection("#main-search-container", objMidiaInfo);
+            initBuildSection("#main-search-container", objMidiaInfo);
+          }
         });
       });
   }

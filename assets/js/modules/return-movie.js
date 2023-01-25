@@ -1,32 +1,49 @@
-export default function returnMovie(idSection) {
-  idSection.addEventListener("click", ({ target }) => {
+import initBuildMidiaInfo from "./build-midia-info.js";
+
+export default function returnMovie(link) {
+  async function getDataMidia(id, type) {
+    const jsonMidia = await (
+      await fetch(
+        `https://api.themoviedb.org/3/${type}/${id}?api_key=25ea17bf3ab54060fea05921b6061c3c&language=en&region=BR`
+      )
+    ).json();
+
+    const objMidiaInfo = {
+      rate: jsonMidia.vote_average.toFixed(1),
+      year: jsonMidia.release_date
+        ? jsonMidia.release_date.slice(0, 4)
+        : jsonMidia.first_air_date.slice(0, 4),
+      backdrop: jsonMidia.backdrop_path,
+      type,
+      title: jsonMidia.title ? jsonMidia.title : jsonMidia.name,
+      genres: jsonMidia.genres,
+      time:
+        type === "movie"
+          ? `${jsonMidia.runtime}min`
+          : `${jsonMidia.number_of_seasons} season(s)`,
+      id,
+      overview: jsonMidia.overview,
+    };
+
+    initBuildMidiaInfo(objMidiaInfo);
+  }
+
+  function getMovie(event) {
+    event.preventDefault();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    const { target } = event;
+    console.log(target);
+
     const midiaId = target.dataset.id;
     const midiaType = target.dataset.type;
-    console.log(midiaId);
-    fetch(
-      `https://api.themoviedb.org/3/${midiaType}/${midiaId}?api_key=25ea17bf3ab54060fea05921b6061c3c&language=en&region=BR`
-    )
-      .then((r) => r.json())
-      .then((json) => {
-        const infoMidia = {
-          dateMovie: json.release_date,
-          dateSerie: json.first_air_date,
-          popularity: json.popularity,
-          overview: json.overview,
-          imageMovie: json.poster_path,
-          link: json.homepage,
-          titleMovie: json.title,
-          titleMovie: json.name,
-          rate: json.vote_average,
-        };
-        console.log(infoMidia);
 
-        // const padraoRegexp = /[\s\W]+/g;
-        // const titleFormated = json.title
-        //   .replace(padraoRegexp, "-")
-        //   .toLowerCase();
+    getDataMidia(midiaId, midiaType);
+  }
 
-        // window.history.pushState(null, null, `${titleFormated}.html`);
-      });
-  });
+  link.addEventListener("click", getMovie);
 }

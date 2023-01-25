@@ -10,14 +10,18 @@ export default async function fetchMovie(category, idSection, objInfos) {
   ).json();
 
   response.results.forEach((item) => {
-    const objMidiaInfo = {
-      rate: item.vote_average,
-      popularity: item.popularity,
-      year: item.release_date,
-      imageMidia: item.poster_path,
-      idMidia: item.id,
-      type: "movie",
-    };
-    initBuildSection(idSection, objMidiaInfo);
+    if (item.backdrop_path) {
+      const objMidiaInfo = {
+        rate: item.vote_average.toFixed(1),
+        popularity: item.popularity,
+        year: item.release_date.slice(0, 4),
+        image: item.poster_path,
+        backdrop: item.poster_path,
+        id: item.id,
+        type: "movie",
+        title: item.title,
+      };
+      initBuildSection(idSection, objMidiaInfo);
+    }
   });
 }
