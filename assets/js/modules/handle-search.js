@@ -2,11 +2,13 @@ import defaultInfos from "./default-infos.js";
 import initBuildSection from "./build-section.js";
 
 export default function initHandleSearch() {
-  const searchInput = document.querySelector('[data-search="container"] input'),
-    sectionTitle = document.querySelector(
-      "#main-search-container .section-title"
-    ),
-    movieList = document.querySelector("#main-search-container .movie-list");
+  const searchInput = document.querySelector('[data-search="container"] input');
+  const sectionTitle = document.querySelector(
+    "#main-search-container .section-title"
+  );
+  const movieList = document.querySelector(
+    "#main-search-container .movie-list"
+  );
 
   const timer = 1000;
 

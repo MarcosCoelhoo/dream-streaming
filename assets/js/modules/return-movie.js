@@ -37,7 +37,6 @@ export default function returnMovie(link) {
     });
 
     const { target } = event;
-    console.log(target);
 
     const midiaId = target.dataset.id;
     const midiaType = target.dataset.type;
