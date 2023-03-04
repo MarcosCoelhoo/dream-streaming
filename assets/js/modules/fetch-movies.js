@@ -5,7 +5,7 @@ export default async function fetchMovie(category, idSection, objInfos) {
 
   const response = await (
     await fetch(
-      `${baseUrl}/movie/${category}?api_key=${apiKey}&page=1&language=en&region=BR`
+      `${baseUrl}/movie/${category}?api_key=${apiKey}&page=1&language=pt-BR&region=BR`
     )
   ).json();
 

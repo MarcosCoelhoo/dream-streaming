@@ -4,7 +4,7 @@ export default function returnMovie(link) {
   async function getDataMidia(id, type) {
     const jsonMidia = await (
       await fetch(
-        `https://api.themoviedb.org/3/${type}/${id}?api_key=25ea17bf3ab54060fea05921b6061c3c&language=en&region=BR`
+        `https://api.themoviedb.org/3/${type}/${id}?api_key=25ea17bf3ab54060fea05921b6061c3c&language=pt-BR&region=BR`
       )
     ).json();
 

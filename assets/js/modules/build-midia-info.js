@@ -49,6 +49,7 @@ export default function initBuildMidiaInfo(objMidia) {
 
       const section = document.querySelector(".section-midia");
       section.classList.add("active");
+      document.title = `Dream | ${title}`;
 
       getSimilarMidias(type, id);
     }

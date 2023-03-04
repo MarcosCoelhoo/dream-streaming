@@ -5,7 +5,7 @@ export default async function fetchSerie(category, idSection, objInfos) {
 
   const response = await (
     await fetch(
-      `${baseUrl}/tv/${category}?api_key=${apiKey}&page=1&language=en&region=BR`
+      `${baseUrl}/tv/${category}?api_key=${apiKey}&page=1&language=pt-BR&region=BR`
     )
   ).json();
 

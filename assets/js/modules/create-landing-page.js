@@ -10,7 +10,7 @@ export default async function initCreateLandingPage() {
 
   const response = await (
     await fetch(
-      `${baseUrl}/movie/popular?api_key=${apiKey}&language=en&region=BR&page=${pageRandom}`
+      `${baseUrl}/movie/popular?api_key=${apiKey}&language=pt-BR&region=BR&page=${pageRandom}`
     )
   ).json();
 
