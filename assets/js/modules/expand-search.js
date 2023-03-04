@@ -1,11 +1,13 @@
 import outsideClick from "./outside-click.js";
 
 export default function initExpandSearch() {
-  const searchContainer = document.querySelector('[data-search="container"]'),
-    searchInput = document.querySelector('[data-search="container"] input'),
-    landingContainer = document.querySelector(".landing-container"),
-    mainContainerContent = document.querySelector("#main-content-container"),
-    mainContainerSearch = document.querySelector("#main-search-container");
+  const searchContainer = document.querySelector('[data-search="container"]');
+  const searchInput = document.querySelector('[data-search="container"] input');
+  const landingContainer = document.querySelector(".landing-container");
+  const mainContainerContent = document.querySelector(
+    "#main-content-container"
+  );
+  const mainContainerSearch = document.querySelector("#main-search-container");
 
   const events = ["touchstart", "click"];
 

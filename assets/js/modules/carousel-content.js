@@ -1,9 +1,9 @@
 export default function carouselContent(idContainer) {
   const carouselControl = document.querySelectorAll(
-      `${idContainer} [data-control]`
-    ),
-    movieList = document.querySelectorAll(`${idContainer} .movie-list li`),
-    maxMovies = movieList.length;
+    `${idContainer} [data-control]`
+  );
+  const movieList = document.querySelectorAll(`${idContainer} .movie-list li`);
+  const maxMovies = movieList.length;
   let currentItem = 0;
 
   movieList[currentItem].classList.add("active");

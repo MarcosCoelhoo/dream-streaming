@@ -1,6 +1,42 @@
 import initBuildSection from "./build-section.js";
 
 export default function initBuildMidiaInfo(objMidia) {
+  async function getSimilarMidias(type, id) {
+    const sectionParent = document.querySelector(
+      "#section-midia-similar .movie-list"
+    );
+
+    if (sectionParent.children.length) {
+      const arrayChildren = Array.from(sectionParent.children);
+
+      arrayChildren.forEach((item) => {
+        sectionParent.removeChild(item);
+      });
+    }
+
+    const jsonSimilar = await (
+      await fetch(
+        `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=25ea17bf3ab54060fea05921b6061c3c&language=en&region=BR`
+      )
+    ).json();
+
+    jsonSimilar.results.forEach((midia) => {
+      const objMidiaSimilar = {
+        rate: midia.vote_average.toFixed(1),
+        year: midia.release_date
+          ? midia.release_date.slice(0, 4)
+          : midia.first_air_date.slice(0, 4),
+        popularity: midia.popularity,
+        image: midia.poster_path,
+        type,
+        id,
+        title: type === "movie" ? midia.title : midia.name,
+      };
+
+      initBuildSection("#section-midia-similar", objMidiaSimilar);
+    });
+  }
+
   function buildMidiaInfo() {
     const { rate, year, backdrop, type, title, genres, time, id, overview } =
       objMidia;
@@ -56,42 +92,6 @@ export default function initBuildMidiaInfo(objMidia) {
   }
 
   buildMidiaInfo();
-
-  async function getSimilarMidias(type, id) {
-    const sectionParent = document.querySelector(
-      "#section-midia-similar .movie-list"
-    );
-
-    if (sectionParent.children.length) {
-      const arrayChildren = Array.from(sectionParent.children);
-
-      arrayChildren.forEach((item) => {
-        sectionParent.removeChild(item);
-      });
-    }
-
-    const jsonSimilar = await (
-      await fetch(
-        `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=25ea17bf3ab54060fea05921b6061c3c&language=en&region=BR`
-      )
-    ).json();
-
-    jsonSimilar.results.forEach((midia) => {
-      const objMidiaSimilar = {
-        rate: midia.vote_average.toFixed(1),
-        year: midia.release_date
-          ? midia.release_date.slice(0, 4)
-          : midia.first_air_date.slice(0, 4),
-        popularity: midia.popularity,
-        image: midia.poster_path,
-        type,
-        id,
-        title: type === "movie" ? midia.title : midia.name,
-      };
-
-      initBuildSection("#section-midia-similar", objMidiaSimilar);
-    });
-  }
 
   const buttonBack = document.querySelector(".back");
   buttonBack.addEventListener("click", (event) => {

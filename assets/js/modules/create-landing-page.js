@@ -1,7 +1,7 @@
 export default async function initCreateLandingPage() {
-  const baseUrl = "https://api.themoviedb.org/3",
-    imageUrl = "https://image.tmdb.org/t/p/w780",
-    apiKey = "25ea17bf3ab54060fea05921b6061c3c";
+  const baseUrl = "https://api.themoviedb.org/3";
+  const imageUrl = "https://image.tmdb.org/t/p/w780";
+  const apiKey = "25ea17bf3ab54060fea05921b6061c3c";
 
   const landingList = document.querySelector(
     ".landing-container .landing-list"
@@ -14,8 +14,8 @@ export default async function initCreateLandingPage() {
     )
   ).json();
 
-  const movieRandom = +(Math.random() * response.results.length + 1).toFixed(),
-    numMovie = (pageRandom - 1) * 20 + movieRandom;
+  const movieRandom = +(Math.random() * response.results.length + 1).toFixed();
+  const numMovie = (pageRandom - 1) * 20 + movieRandom;
 
   const {
     vote_average: rate,

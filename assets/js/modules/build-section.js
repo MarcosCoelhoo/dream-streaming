@@ -5,8 +5,7 @@ export default function initBuildSection(idSection, objMidiaInfo) {
   function buildSection() {
     const sectionParent = document.querySelector(`${idSection} .movie-list`);
 
-    const { rate, popularity, year, image, id, type, title, backdrop } =
-      objMidiaInfo;
+    const { rate, popularity, year, image, id, type, title } = objMidiaInfo;
 
     const padraoRegexp = /[\s\W]+/g;
     const titleFormated = title.replace(padraoRegexp, "-").toLowerCase();
