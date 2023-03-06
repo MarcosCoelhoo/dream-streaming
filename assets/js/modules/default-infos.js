@@ -1,4 +1,4 @@
-import fetchMovies from "./fetch-movies.js";
+import fetchMovies from "./set-fetch.js";
 import fetchSeries from "./fetch-series.js";
 
 export default function defaultInfos() {
