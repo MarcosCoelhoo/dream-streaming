@@ -1,15 +1,22 @@
 import carouselContent from "./carousel-content.js";
 import returnMovie from "./return-movie.js";
 
-export default function initBuildSection(idSection, objMidiaInfo) {
-  function buildSection() {
-    const sectionParent = document.querySelector(`${idSection} .movie-list`);
+export default class BuildSection {
+  constructor(idSection, objMidiaInfo) {
+    this.objMidiaInfo = objMidiaInfo;
+    this.idSection = idSection;
+    this.parentMidiaList = document.querySelector(`${idSection} .movie-list`);
+  }
 
-    const { rate, popularity, year, image, id, type, title } = objMidiaInfo;
+  buildSection() {
+    const { rate, popularity, year, image, id, type, title } =
+      this.objMidiaInfo;
 
     const padraoRegexp = /[\s\W]+/g;
     const titleFormated = title.replace(padraoRegexp, "-").toLowerCase();
 
+    // verifica se a midia tem imagem
+    // caso não tenho ela não é adicionada
     if (image) {
       const itemLi = document.createElement("li");
 
@@ -39,10 +46,14 @@ export default function initBuildSection(idSection, objMidiaInfo) {
 </a>
   `;
 
-      sectionParent.appendChild(itemLi);
+      this.parentMidiaList.appendChild(itemLi);
       returnMovie(itemLi.querySelector("a"));
     }
   }
-  buildSection();
-  carouselContent(idSection);
+
+  init() {
+    this.buildSection();
+    carouselContent(this.idSection);
+    return this;
+  }
 }
