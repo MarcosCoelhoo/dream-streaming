@@ -1,4 +1,4 @@
-import initBuildSection from "./build-section.js";
+import BuildSection from "./build-section.js";
 
 export default class SetFetch {
   constructor(baseUrl, apiKey, imageUrl, category, idSection, typeMidiaFetch) {
@@ -25,36 +25,25 @@ export default class SetFetch {
     };
   }
 
-  startFetch() {
-    fetch(
-      `${this.baseUrl}/${this.typeMidiaFetch}/${this.category}?api_key=${this.apiKey}&page=1&language=pt-BR&region=BR`
-    )
-      .then((resp) => resp.json())
-      .then((midiaJson) => {
-        midiaJson.results.forEach((midia) => {
-          const obj = this.getDataMidia(midia);
-          initBuildSection(this.idSection, obj);
-        });
-      });
+  async startFetch() {
+    const midiaJson = await (
+      await fetch(
+        `${this.baseUrl}/${this.typeMidiaFetch}/${this.category}?api_key=${this.apiKey}&page=1&language=pt-BR&region=BR`
+      )
+    ).json();
+
+    midiaJson.results.forEach((midia) => {
+      // ativa a função getDataMidia pra receber
+      // o objeto com os dados escolhidos
+      const obj = this.getDataMidia(midia);
+
+      const buildSection = new BuildSection(this.idSection, obj);
+      buildSection.init();
+    });
   }
 
   init() {
     this.startFetch();
+    return this;
   }
-
-  // response.results.forEach((item) => {
-  //   if (item.backdrop_path) {
-  //     const objMidiaInfo = {
-  //       rate: item.vote_average.toFixed(1),
-  //       popularity: item.popularity,
-  //       year: item.release_date.slice(0, 4),
-  //       image: item.poster_path,
-  //       backdrop: item.poster_path,
-  //       id: item.id,
-  //       type: "midia",
-  //       title: item.title,
-  //     };
-  //     initBuildSection(idSection, objMidiaInfo);
-  //   }
-  // });
 }

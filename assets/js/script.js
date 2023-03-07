@@ -51,4 +51,4 @@ fetchTvTopRated.init();
 initMenuMobile();
 initExpandSearch();
 initCreateLandingPage();
-initHandleSearch();
+// initHandleSearch();
