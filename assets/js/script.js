@@ -1,8 +1,8 @@
 import SetFetch from "./modules/set-fetch.js";
+import CreateLanding from "./modules/create-landing.js";
 import initMenuMobile from "./modules/menu-mobile.js";
 import initExpandSearch from "./modules/expand-search.js";
-import initCreateLandingPage from "./modules/create-landing-page.js";
-import initHandleSearch from "./modules/handle-search.js";
+// import initHandleSearch from "./modules/handle-search.js";
 
 const baseUrl = "https://api.themoviedb.org/3";
 const apiKey = "25ea17bf3ab54060fea05921b6061c3c";
@@ -48,7 +48,14 @@ const fetchTvTopRated = new SetFetch(
 );
 fetchTvTopRated.init();
 
+const createLanding = new CreateLanding(
+  baseUrl,
+  apiKey,
+  imageUrl,
+  ".landing-container .landing-list"
+);
+createLanding.init();
+
 initMenuMobile();
 initExpandSearch();
-initCreateLandingPage();
 // initHandleSearch();
