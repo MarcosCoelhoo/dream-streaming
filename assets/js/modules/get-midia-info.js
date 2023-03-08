@@ -1,7 +1,13 @@
 import initBuildMidiaInfo from "./build-midia-info.js";
 
-export default function returnMovie(link) {
-  async function getDataMidia(id, type) {
+export default class GetMidiaInfo {
+  constructor(midiaLink, idSectionSimilar) {
+    this.midiaLink = midiaLink;
+    this.idSectionSimilar = idSectionSimilar;
+    this.getInfoMidia = this.getInfoMidia.bind(this);
+  }
+
+  async getDataMidia(id, type) {
     const jsonMidia = await (
       await fetch(
         `https://api.themoviedb.org/3/${type}/${id}?api_key=25ea17bf3ab54060fea05921b6061c3c&language=pt-BR&region=BR`
@@ -25,10 +31,10 @@ export default function returnMovie(link) {
       overview: jsonMidia.overview,
     };
 
-    initBuildMidiaInfo(objMidiaInfo);
+    initBuildMidiaInfo(objMidiaInfo, this.idSectionSimilar);
   }
 
-  function getMovie(event) {
+  getInfoMidia(event) {
     event.preventDefault();
 
     window.scrollTo({
@@ -41,8 +47,14 @@ export default function returnMovie(link) {
     const midiaId = target.dataset.id;
     const midiaType = target.dataset.type;
 
-    getDataMidia(midiaId, midiaType);
+    this.getDataMidia(midiaId, midiaType);
   }
 
-  link.addEventListener("click", getMovie);
+  addEventMidia() {
+    this.midiaLink.addEventListener("click", this.getInfoMidia);
+  }
+
+  init() {
+    this.addEventMidia();
+  }
 }

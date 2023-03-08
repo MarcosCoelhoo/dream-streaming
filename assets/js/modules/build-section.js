@@ -1,5 +1,4 @@
 import carouselContent from "./carousel-content.js";
-import returnMovie from "./return-movie.js";
 
 export default class BuildSection {
   constructor(idSection, objMidiaInfo) {
@@ -47,7 +46,6 @@ export default class BuildSection {
   `;
 
       this.parentMidiaList.appendChild(itemLi);
-      returnMovie(itemLi.querySelector("a"));
     }
   }
 

@@ -1,4 +1,5 @@
 import BuildSection from "./build-section.js";
+import GetMidiaInfo from "./get-midia-info.js";
 
 export default class SetFetch {
   constructor(baseUrl, apiKey, imageUrl, category, idSection, typeMidiaFetch) {
@@ -39,6 +40,14 @@ export default class SetFetch {
 
       const buildSection = new BuildSection(this.idSection, obj);
       buildSection.init();
+    });
+
+    const movieList = document.querySelectorAll(
+      `${this.idSection} .movie-list li a`
+    );
+    movieList.forEach((midia) => {
+      const getMidiaInfo = new GetMidiaInfo(midia, "#section-midia-similar");
+      getMidiaInfo.init();
     });
   }
 

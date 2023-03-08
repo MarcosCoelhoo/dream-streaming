@@ -1,6 +1,6 @@
-import initBuildSection from "./build-section.js";
+import BuildSection from "./build-section.js";
 
-export default function initBuildMidiaInfo(objMidia) {
+export default function initBuildMidiaInfo(objMidia, idSectionSimilar) {
   async function getSimilarMidias(type, id) {
     const sectionParent = document.querySelector(
       "#section-midia-similar .movie-list"
@@ -33,7 +33,8 @@ export default function initBuildMidiaInfo(objMidia) {
         title: type === "movie" ? midia.title : midia.name,
       };
 
-      initBuildSection("#section-midia-similar", objMidiaSimilar);
+      const buildSection = new BuildSection(idSectionSimilar, objMidiaSimilar);
+      buildSection.init();
     });
   }
 
