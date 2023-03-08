@@ -1,0 +1,174 @@
+.section-midia {
+  display: none;
+}
+
+.section-midia.active {
+  display: block;
+  background: var(--principal-blue);
+  position: absolute;
+  height: 100%;
+  top: 0;
+  z-index: 999;
+  animation: showContentMidia 0.3s forwards;
+}
+
+@keyframes showContentMidia {
+  from {
+    opacity: 0;
+    top: 50px;
+  }
+
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+.section-content {
+  margin-bottom: 24px;
+}
+
+.section-content .midia-image {
+  position: relative;
+}
+
+.section-content .midia-image .filter-image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(to top, var(--principal-blue) 8%, transparent);
+}
+
+.section-content .midia-image img {
+  object-fit: cover;
+  border-radius: 6px;
+  max-height: 500px;
+}
+
+.section-content .midia-info .midia-data {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.section-content .midia-info .midia-data .data {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+}
+
+.section-content .midia-info .midia-data .data:not(:last-child)::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--light-blue);
+  display: inline-block;
+  margin: 0 6px;
+}
+
+.section-content .midia-info .midia-title {
+  font-family: "Work Sans", sans-serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--light-blue);
+  margin-bottom: 16px;
+}
+
+.section-content .midia-info .midia-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.9rem;
+  color: #fff;
+  text-transform: capitalize;
+  margin-bottom: 16px;
+}
+
+.section-content .midia-info .midia-genres li {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 2px 10px;
+}
+
+.section-midia .section-title {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.section-content .midia-info .midia-description .description-text {
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #9c9c9c;
+}
+
+.section-midia #section-midia-similar .movie-list {
+  flex-wrap: wrap;
+  overflow-x: auto;
+}
+
+.section-midia #section-midia-similar .movie-list li {
+  flex: 130px;
+}
+
+.section-midia #section-midia-similar .movie-list li .movie-image {
+  width: 100%;
+}
+
+.section-midia .back {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: "Manrope", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--light-blue);
+  margin-bottom: 16px;
+}
+
+.section-midia .back .back-icon {
+  width: 24px;
+}
+
+@media (max-width: 700px) {
+  .section-midia #section-midia-similar .movie-list {
+    justify-content: space-around;
+  }
+
+  .section-content .midia-info .midia-data .data {
+    font-size: 0.7rem;
+  }
+
+  .section-content .midia-info .midia-data .data:not(:last-child)::after {
+    width: 4px;
+    height: 4px;
+  }
+
+  .section-content .midia-info .midia-title {
+    font-size: 1.6rem;
+  }
+
+  .section-content .midia-info .midia-description .description-text {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .section-content .midia-info .midia-title {
+    font-size: 1.5rem;
+  }
+
+  .section-content .midia-info .midia-data .data {
+    font-size: 0.6rem;
+  }
+
+  .section-content .midia-info .midia-genres {
+    font-size: 0.6rem;
+  }
+}

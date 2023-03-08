@@ -2,7 +2,7 @@ import SetFetch from "./modules/set-fetch.js";
 import CreateLanding from "./modules/create-landing.js";
 import MenuMobile from "./modules/menu-mobile.js";
 import ExpandSearch from "./modules/expand-search.js";
-// import initHandleSearch from "./modules/handle-search.js";
+import HandleSearch from "./modules/handle-search.js";
 
 const baseUrl = "https://api.themoviedb.org/3";
 const apiKey = "25ea17bf3ab54060fea05921b6061c3c";
@@ -71,4 +71,12 @@ const expandSearch = new ExpandSearch(
 );
 expandSearch.init();
 
-// initHandleSearch();
+const handleSearch = new HandleSearch(
+  "#main-search-container",
+  '[data-search="container"] input',
+  "#main-search-container .section-title",
+  "#main-search-container .movie-list",
+  baseUrl,
+  apiKey
+);
+handleSearch.init();
