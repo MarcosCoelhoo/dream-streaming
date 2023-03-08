@@ -1,4 +1,4 @@
-import outsideClick from "./outside-click.js";
+import OutsideClick from "./outside-click.js";
 
 export default class ExpandSearch {
   constructor(
@@ -31,17 +31,23 @@ export default class ExpandSearch {
     this.mainContainerContent.classList.remove(this.activeClass);
     this.landingContainer.classList.remove(this.activeClass);
 
-    outsideClick(this.containerSearch, this.events, () => {
-      this.containerSearch.classList.remove(this.activeClass);
-      if (this.searchInput.value === "") {
-        this.mainContainerSearch.classList.remove(this.activeClass);
-        this.landingContainer.classList.add(this.activeClass);
-        this.mainContainerContent.classList.add(this.activeClass);
+    const outsideClick = new OutsideClick(
+      this.containerSearch,
+      this.events,
+      () => {
+        this.containerSearch.classList.remove(this.activeClass);
+        if (this.searchInput.value === "") {
+          this.mainContainerSearch.classList.remove(this.activeClass);
+          this.landingContainer.classList.add(this.activeClass);
+          this.mainContainerContent.classList.add(this.activeClass);
+        }
       }
-    });
+    );
+    outsideClick.init();
   }
 
   init() {
     this.containerSearch.addEventListener("click", this.handleExpandSearch);
+    return this;
   }
 }

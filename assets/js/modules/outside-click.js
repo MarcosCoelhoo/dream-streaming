@@ -1,24 +1,38 @@
-export default function outsideClick(element, events, callback) {
-  const html = document.documentElement;
-  const outside = "data-outside";
+export default class OutsideClick {
+  constructor(element, events, callback) {
+    this.element = element;
+    this.events = events;
+    this.callback = callback;
+    this.html = document.documentElement;
+    this.outside = "data-outside";
 
-  function handleOutsideClick({ target }) {
-    if (!element.contains(target)) {
-      element.removeAttribute(outside);
-      events.forEach((userEvents) => {
-        html.removeEventListener(userEvents, handleOutsideClick);
+    this.handleOutsideClick = this.handleOutsideClick.bind(this);
+  }
+
+  handleOutsideClick({ target }) {
+    if (!this.element.contains(target)) {
+      this.element.removeAttribute(this.outside);
+      this.events.forEach((userEvents) => {
+        this.html.removeEventListener(userEvents, this.handleOutsideClick);
       });
-      callback();
+      this.callback();
     }
   }
 
-  if (!element.hasAttribute(outside)) {
-    events.forEach((userEvents) => {
+  addEventsOutsideClick() {
+    this.events.forEach((userEvents) => {
       setTimeout(() => {
-        html.addEventListener(userEvents, handleOutsideClick);
+        this.html.addEventListener(userEvents, this.handleOutsideClick);
       });
 
-      element.setAttribute(outside, "");
+      this.element.setAttribute(this.outside, "");
     });
+  }
+
+  init() {
+    if (!this.element.hasAttribute(this.outside)) {
+      this.addEventsOutsideClick();
+    }
+    return this;
   }
 }
