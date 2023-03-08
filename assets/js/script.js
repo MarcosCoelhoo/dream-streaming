@@ -1,8 +1,7 @@
 import SetFetch from "./modules/set-fetch.js";
 import CreateLanding from "./modules/create-landing.js";
 import MenuMobile from "./modules/menu-mobile.js";
-
-import initExpandSearch from "./modules/expand-search.js";
+import ExpandSearch from "./modules/expand-search.js";
 // import initHandleSearch from "./modules/handle-search.js";
 
 const baseUrl = "https://api.themoviedb.org/3";
@@ -63,5 +62,13 @@ const menuMobile = new MenuMobile(
 );
 menuMobile.init();
 
-initExpandSearch();
+const expandSearch = new ExpandSearch(
+  '[data-search="container"]',
+  '[data-search="container"] input',
+  ".landing-container",
+  "#main-content-container",
+  "#main-search-container"
+);
+expandSearch.init();
+
 // initHandleSearch();

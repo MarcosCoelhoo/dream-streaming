@@ -1,31 +1,47 @@
 import outsideClick from "./outside-click.js";
 
-export default function initExpandSearch() {
-  const searchContainer = document.querySelector('[data-search="container"]');
-  const searchInput = document.querySelector('[data-search="container"] input');
-  const landingContainer = document.querySelector(".landing-container");
-  const mainContainerContent = document.querySelector(
-    "#main-content-container"
-  );
-  const mainContainerSearch = document.querySelector("#main-search-container");
+export default class ExpandSearch {
+  constructor(
+    containerSearch,
+    searchInput,
+    landingContainer,
+    mainContainerContent,
+    mainContainerSearch
+  ) {
+    this.containerSearch = document.querySelector(containerSearch);
+    this.searchInput = document.querySelector(searchInput);
+    this.landingContainer = document.querySelector(landingContainer);
+    this.mainContainerContent = document.querySelector(mainContainerContent);
+    this.mainContainerSearch = document.querySelector(mainContainerSearch);
 
-  const events = ["touchstart", "click"];
+    this.events = ["touchstart", "click"];
+    this.activeClass = "active";
 
-  function handleExpandSearch() {
-    searchContainer.classList.add("active");
-    mainContainerSearch.classList.add("active");
-    mainContainerContent.classList.remove("active");
-    landingContainer.classList.remove("active");
+    this.handleExpandSearch = this.handleExpandSearch.bind(this);
+  }
 
-    outsideClick(searchContainer, events, () => {
-      searchContainer.classList.remove("active");
-      if (searchInput.value === "") {
-        mainContainerSearch.classList.remove("active");
-        landingContainer.classList.add("active");
-        mainContainerContent.classList.add("active");
+  handleExpandSearch() {
+    // Adiciona a classe active para mostrar
+    //  o mainContainerSearch e o containerSearch
+    this.containerSearch.classList.add(this.activeClass);
+    this.mainContainerSearch.classList.add(this.activeClass);
+
+    // E retira classe para desaparecer o
+    // mainContainerContent e o landingContainer
+    this.mainContainerContent.classList.remove(this.activeClass);
+    this.landingContainer.classList.remove(this.activeClass);
+
+    outsideClick(this.containerSearch, this.events, () => {
+      this.containerSearch.classList.remove(this.activeClass);
+      if (this.searchInput.value === "") {
+        this.mainContainerSearch.classList.remove(this.activeClass);
+        this.landingContainer.classList.add(this.activeClass);
+        this.mainContainerContent.classList.add(this.activeClass);
       }
     });
   }
 
-  searchContainer.addEventListener("click", handleExpandSearch);
+  init() {
+    this.containerSearch.addEventListener("click", this.handleExpandSearch);
+  }
 }

@@ -58,7 +58,6 @@
 
 .movie-list {
   display: flex;
-  gap: 15px;
   overflow-x: scroll;
 }
 
@@ -71,6 +70,12 @@
   width: fit-content;
   box-shadow: 0 0 12.5px 2px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  transition: 0.3s;
+  transform: scale(0.9);
+}
+
+.movie-list li:hover {
+  transform: scale(1);
 }
 
 .movie-list li .movie-image {
