@@ -1,6 +1,7 @@
 import SetFetch from "./modules/set-fetch.js";
 import CreateLanding from "./modules/create-landing.js";
-import initMenuMobile from "./modules/menu-mobile.js";
+import MenuMobile from "./modules/menu-mobile.js";
+
 import initExpandSearch from "./modules/expand-search.js";
 // import initHandleSearch from "./modules/handle-search.js";
 
@@ -56,6 +57,11 @@ const createLanding = new CreateLanding(
 );
 createLanding.init();
 
-initMenuMobile();
+const menuMobile = new MenuMobile(
+  '[data-menu="button"]',
+  '[data-menu="container"]'
+);
+menuMobile.init();
+
 initExpandSearch();
 // initHandleSearch();

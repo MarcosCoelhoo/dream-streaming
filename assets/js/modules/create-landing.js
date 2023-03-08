@@ -15,7 +15,6 @@ export default class CreateLandingPage {
         `${this.baseUrl}/movie/popular?api_key=${this.apiKey}&language=pt-BR&region=BR&page=${pageRandom}`
       )
     ).json();
-    console.log(midiaJson);
 
     // Seleciona um filme aleatorio do objeto e
     // deixa o resultado sem casas decimais
