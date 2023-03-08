@@ -1,4 +1,4 @@
-import outsideClick from "./outside-click.js";
+import OutsideClick from "./outside-click.js";
 
 export default class MenuMobile {
   constructor(btnMenu, containerMenu) {
@@ -14,10 +14,15 @@ export default class MenuMobile {
     this.btnMenu.classList.add(this.activeClass);
     this.containerMenu.classList.add(this.activeClass);
 
-    outsideClick(this.containerMenu, this.events, () => {
-      this.btnMenu.classList.remove(this.activeClass);
-      this.containerMenu.classList.remove(this.activeClass);
-    });
+    const outsideClick = new OutsideClick(
+      this.containerMenu,
+      this.events,
+      () => {
+        this.btnMenu.classList.remove(this.activeClass);
+        this.containerMenu.classList.remove(this.activeClass);
+      }
+    );
+    outsideClick.init();
   }
 
   init() {
