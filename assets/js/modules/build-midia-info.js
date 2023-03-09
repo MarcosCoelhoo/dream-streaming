@@ -103,7 +103,7 @@ export default class BuildMidiaInfo {
       event.preventDefault();
 
       const section = document.querySelector(".section-midia");
-      document.title = "Dream";
+      document.title = "Dream | Home";
 
       section.classList.remove("active");
     });

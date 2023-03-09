@@ -4,7 +4,6 @@ export default class BuildSection {
   constructor(idSection, objMidiaInfo) {
     this.objMidiaInfo = objMidiaInfo;
     this.idSection = idSection;
-    console.log(idSection);
     this.parentMidiaList = document.querySelector(`${idSection} .movie-list`);
   }
 

@@ -36,15 +36,18 @@ export default class SetFetch {
     midiaJson.results.forEach((midia) => {
       // ativa a função getDataMidia pra receber
       // o objeto com os dados escolhidos
-      const obj = this.getDataMidia(midia);
+      const objMidia = this.getDataMidia(midia);
 
-      const buildSection = new BuildSection(this.idSection, obj);
+      const buildSection = new BuildSection(this.idSection, objMidia);
       buildSection.init();
     });
 
     const movieList = document.querySelectorAll(
       `${this.idSection} .movie-list li a`
     );
+
+    // Ativa a classe getMidiaInfo para
+    // selecionar todos e os links da pagina
     movieList.forEach((midia) => {
       const getMidiaInfo = new GetMidiaInfo(midia, "#section-midia-similar");
       getMidiaInfo.init();
