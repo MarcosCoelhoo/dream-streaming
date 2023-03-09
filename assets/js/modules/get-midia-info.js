@@ -1,4 +1,4 @@
-import initBuildMidiaInfo from "./build-midia-info.js";
+import BuildMidiaInfo from "./build-midia-info.js";
 
 export default class GetMidiaInfo {
   constructor(midiaLink, idSectionSimilar) {
@@ -31,7 +31,11 @@ export default class GetMidiaInfo {
       overview: jsonMidia.overview,
     };
 
-    initBuildMidiaInfo(objMidiaInfo, this.idSectionSimilar);
+    const buildMidiaInfo = new BuildMidiaInfo(
+      objMidiaInfo,
+      this.idSectionSimilar
+    );
+    buildMidiaInfo.init();
   }
 
   getInfoMidia(event) {
