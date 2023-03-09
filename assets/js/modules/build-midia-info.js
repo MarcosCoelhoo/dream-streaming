@@ -1,16 +1,20 @@
 import BuildSection from "./build-section.js";
 
-export default function initBuildMidiaInfo(objMidia, idSectionSimilar) {
-  async function getSimilarMidias(type, id) {
-    const sectionParent = document.querySelector(
-      "#section-midia-similar .movie-list"
+export default class BuildMidiaInfo {
+  constructor(objMidia, idSectionSimilar) {
+    this.idSectionSimilar = idSectionSimilar;
+    this.sectionParent = document.querySelector(
+      `${idSectionSimilar} .movie-list`
     );
+    this.objMidia = objMidia;
+  }
 
-    if (sectionParent.children.length) {
-      const arrayChildren = Array.from(sectionParent.children);
+  async getSimilarMidias(type, id) {
+    if (this.sectionParent.children.length) {
+      const arrayChildren = [...this.sectionParent.children];
 
       arrayChildren.forEach((item) => {
-        sectionParent.removeChild(item);
+        this.sectionParent.removeChild(item);
       });
     }
 
@@ -33,14 +37,17 @@ export default function initBuildMidiaInfo(objMidia, idSectionSimilar) {
         title: type === "movie" ? midia.title : midia.name,
       };
 
-      const buildSection = new BuildSection(idSectionSimilar, objMidiaSimilar);
+      const buildSection = new BuildSection(
+        this.idSectionSimilar,
+        objMidiaSimilar
+      );
       buildSection.init();
     });
   }
 
-  function buildMidiaInfo() {
+  buildMidiaInfo() {
     const { rate, year, backdrop, type, title, genres, time, id, overview } =
-      objMidia;
+      this.objMidia;
 
     const sectionParentContent = document.querySelector(
       ".section-midia .section-content"
@@ -79,28 +86,32 @@ export default function initBuildMidiaInfo(objMidia, idSectionSimilar) {
       const ulGenres = document.querySelector(".section-midia .midia-genres");
 
       genres.forEach((genre) => {
-        const liGenre = document.createElement("li");
-        liGenre.innerHTML = `<p>${genre.name}</p>`;
-        ulGenres.appendChild(liGenre);
+        ulGenres.innerHTML += `<li><p>${genre.name}</p></li>`;
       });
 
       const section = document.querySelector(".section-midia");
       section.classList.add("active");
       document.title = `Dream | ${title}`;
 
-      getSimilarMidias(type, id);
+      this.getSimilarMidias(type, id);
     }
   }
 
-  buildMidiaInfo();
+  static addEventButtonBack() {
+    const buttonBack = document.querySelector(".back");
+    buttonBack.addEventListener("click", (event) => {
+      event.preventDefault();
 
-  const buttonBack = document.querySelector(".back");
-  buttonBack.addEventListener("click", (event) => {
-    event.preventDefault();
+      const section = document.querySelector(".section-midia");
+      document.title = "Dream";
 
-    const section = document.querySelector(".section-midia");
-    document.title = "Dream";
+      section.classList.remove("active");
+    });
+  }
 
-    section.classList.remove("active");
-  });
+  init() {
+    this.buildMidiaInfo();
+    this.constructor.addEventButtonBack();
+    return this;
+  }
 }
