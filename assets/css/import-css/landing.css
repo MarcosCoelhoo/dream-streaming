@@ -214,6 +214,7 @@
 @media (max-width: 450px) {
   .landing-list .landing-content .content-texts .landing-title {
     font-size: 1.3rem;
+    width: auto;
   }
 
   .landing-container .landing-content .content-texts .landing-description {

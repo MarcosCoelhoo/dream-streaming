@@ -58,21 +58,21 @@
   color: #9c9c9c;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 700px) {
   .footer-downloads .downloads-title {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
   .link .link-image {
-    max-width: 36px;
+    max-width: 1.75rem;
   }
 
   .link .link-title h4 {
-    font-size: 1.25rem;
+    font-size: 0.875rem;
   }
 
   .link-title span {
-    font-size: 0.75rem;
+    font-size: 0.625rem;
   }
 
   .main-footer .footer-infos {
