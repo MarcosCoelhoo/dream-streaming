@@ -20,7 +20,7 @@ export default class BuildMidiaInfo {
 
     const jsonSimilar = await (
       await fetch(
-        `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=25ea17bf3ab54060fea05921b6061c3c&language=en&region=BR`
+        `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=a872fcc401fdd16fa2dc2d79d5c27c30&language=en&region=BR`
       )
     ).json();
 
