@@ -5,7 +5,7 @@ import ExpandSearch from "./modules/expand-search.js";
 import HandleSearch from "./modules/handle-search.js";
 
 const baseUrl = "https://api.themoviedb.org/3";
-const apiKey = "25ea17bf3ab54060fea05921b6061c3c";
+const apiKey = "a872fcc401fdd16fa2dc2d79d5c27c30";
 const imageUrl = "https://image.tmdb.org/t/p/w780";
 
 const fetchMoviesPopular = new SetFetch(
